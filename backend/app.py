@@ -34,7 +34,7 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 async def get_supported_categories():
     """
     Categories that currently have a reference template loaded
-    (i.e. a matching <CODE>_Template.pdf/docx file exists in reference/).
+    (i.e. a matching <CODE>_Template.pdf/docx file exists in references/).
     The frontend uses this to flag which categories are ready to validate.
     """
     return {"supported_categories": supported_categories()}
