@@ -88,11 +88,21 @@ select {
     background: #142c44;
     cursor: pointer;
     margin-bottom: 30px;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
 }
 
 .upload-icon {
-    font-size: 52px;
+    display: flex;
+    justify-content: center;
     margin-bottom: 10px;
+    color: #4fe6a3;
+}
+
+.upload-box-dragging {
+    border-color: #0db39e;
+    background: #16324c;
+    transform: scale(1.01);
+    box-shadow: 0 0 25px rgba(13, 179, 158, 0.35);
 }
 
 .upload-box h2 {
@@ -133,6 +143,35 @@ button:disabled {
 
 .result h2 {
     margin-top: 0;
+}
+
+.result-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.result-heading h2 {
+    text-transform: capitalize;
+}
+
+.reset-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: auto;
+    margin-top: 20px;
+    padding: 14px 26px;
+    font-size: 16px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
+}
+
+.reset-button:hover {
+    border-color: #0db39e;
+    background: rgba(13, 179, 158, 0.12);
 }
 
 .result-grid {
