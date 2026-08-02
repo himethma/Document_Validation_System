@@ -150,23 +150,20 @@ function App() {
                             }
                         >
                             <span>
-                                {
-                                    documents.find(
-                                        d => d[0] === category
-                                    )?.[0]
-                                }
-                                {" - "}
+                                <span className="doc-code">
+                                    {
+                                        documents.find(
+                                            d => d[0] === category
+                                        )?.[0]
+                                    }
+                                </span>
                                 {
                                     documents.find(
                                         d => d[0] === category
                                     )?.[1]
                                 }
-                                {" "}
-                                <span className={`status-pill ${supportedCategories.includes(category) ? "status-ready" : "status-soon"}`}>
-                                    {supportedCategories.includes(category) ? "Ready" : "Coming Soon"}
-                                </span>
                             </span>
-                            <span>
+                            <span className="dropdown-arrow">
                                 {dropdownOpen ? "▲" : "▼"}
                             </span>
                         </div>
@@ -185,16 +182,11 @@ function App() {
                                                         setDropdownOpen(false);
                                                     }}
                                                 >
-                                                    <span className="dropdown-option-text">
-                                                        <strong>
-                                                            {doc[0]}
-                                                        </strong>
-                                                        <small>
-                                                            {doc[1]}
-                                                        </small>
+                                                    <span className="doc-code">
+                                                        {doc[0]}
                                                     </span>
-                                                    <span className={`status-pill ${isReady ? "status-ready" : "status-soon"}`}>
-                                                        {isReady ? "Ready" : "Coming Soon"}
+                                                    <span className="dropdown-option-text">
+                                                        {doc[1]}
                                                     </span>
                                                 </div>
                                             );
