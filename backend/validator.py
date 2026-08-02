@@ -16,8 +16,8 @@ client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 # ---------------------------------------------------------------------------
 # Reference documents (gold standards).
 #
-# Templates are AUTO-DISCOVERED from the reference/ folder - no code changes
-# are needed to add a new document category. Just drop a file in reference/
+# Templates are AUTO-DISCOVERED from the references/ folder - no code changes
+# are needed to add a new document category. Just drop a file in references/
 # named exactly:
 #
 #       <CATEGORY_CODE>_Template.pdf     (or .docx)
@@ -29,7 +29,7 @@ client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 # Example current files: FRD_Template.pdf, HLD_Template.pdf, LLD_Template.pdf,
 # PRD_Template.pdf, SRS_Template.pdf, STD_Template.pdf
 # ---------------------------------------------------------------------------
-REFERENCE_DIR = "reference"
+REFERENCE_DIR = "references"
 TEMPLATE_FILENAME_PATTERN = re.compile(r"^(.+)_Template\.(pdf|docx)$", re.IGNORECASE)
 
 # category -> filename inside REFERENCE_DIR, rebuilt by discover_references()
@@ -40,7 +40,7 @@ _reference_cache = {}
 
 
 def discover_references():
-    """Scan reference/ and build the category -> filename map from filenames."""
+    """Scan references/ and build the category -> filename map from filenames."""
     REFERENCE_FILES.clear()
 
     if not os.path.isdir(REFERENCE_DIR):
