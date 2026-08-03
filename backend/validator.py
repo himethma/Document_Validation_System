@@ -139,6 +139,42 @@ USER'S UPLOADED DOCUMENT
 {extracted_text[:14000]}
 
 ============================================================
+STEP 0 - BOILERPLATE / UNFILLED TEMPLATE CHECK (HARD GATE)
+============================================================
+Before doing anything else, check whether the USER'S document is itself an
+unfilled template, instruction sheet, or boilerplate shell rather than a
+real, completed document. Signs of this include (non-exhaustive):
+    - Section bodies are instructional/imperative sentences telling the
+      reader what to write (e.g. "Describe the purpose of this document",
+      "List the main functions of the system", "Explain the scope...").
+    - Generic placeholder markers: "[Insert ...]", "TBD", "TODO", "Lorem
+      ipsum", "<Project Name>", "XXX", empty tables with only header rows.
+    - The document reads as a set of instructions FOR filling something
+      out, not an actual filled-out account of a real project.
+    - The content is near-identical in wording to a generic template
+      structure with no project-specific facts, names, numbers, or details
+      substituted in.
+
+If the USER'S document is substantially an unfilled template or boilerplate
+shell (even if headings match the checklist perfectly), you MUST immediately
+return:
+    decision = "REJECT"
+    is_spam_or_irrelevant = true
+    structure_score = 0
+    content_score = 0
+    confidence = 0
+    reason = a one-sentence explanation that this is an unfilled
+             template/placeholder document, not a completed submission.
+Do NOT proceed to Steps 1-6 in that case - skip straight to STEP 7 (output)
+with the above values. A document that merely LOOKS structurally complete
+because its headings match the reference is not sufficient for ACCEPT if
+the content under those headings is placeholder/instructional text rather
+than real project-specific writing.
+
+If the document is a genuine, substantively completed document, continue
+to STEP 1 as normal.
+
+============================================================
 STEP 1 - IDENTIFY THE ACTUAL DOCUMENT TYPE
 ============================================================
 Independently of what category was selected in the upload form, read the
